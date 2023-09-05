@@ -1,7 +1,0 @@
-{
-  "name": "carpooling",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
