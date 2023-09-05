@@ -1,0 +1,112 @@
+<ion-content>
+  <div class="ion-padding">
+    <div class="space-between">
+      <span>
+        <p class="m-0">Hi Casper</p>
+        <h3 style="margin: 0.2em 0px;">Welcome Back!</h3>
+      </span>
+      <span class="vertical-align">
+        <img class="profile_image" src="../../assets/account_image.jpg">
+      </span>
+    </div>
+
+    <div class="overview-bottons mt-4">
+      <div class="botton-top blue">
+        <h1 class="m-0">Ready? Lets Drive</h1>
+        <h1 class="m-0">
+          <span class="vertical-align">Find a GoShare<ion-icon name="arrow-forward-outline"
+              class="ml-1 color-accent"></ion-icon></span>
+        </h1>
+      </div>
+      <div class="botton-top green">
+        <h1 class="m-0">See your overview</h1>
+        <h1 class="m-0">
+          <span class="vertical-align">of saved co2<ion-icon name="arrow-forward-outline"
+              class="ml-1 color-blue"></ion-icon></span>
+        </h1>
+      </div>
+      <div class="botton-top yellow">
+        <h1 class="m-0">Sharing is caring</h1>
+        <h1 class="m-0">
+          <span class="vertical-align">with carpooling<ion-icon name="arrow-forward-outline"
+              class="ml-1"></ion-icon></span>
+        </h1>
+      </div>
+    </div>
+    
+    <div class="mt-4 mb-2 space-between gap">
+      <a class="card" href="home/pickLocation">
+        <img class="car-img accent-filter mb-1" src="../../assets/svg/car-car-car.svg">
+
+        <h3>Drive</h3>
+        <p class="m-0">Start your drive</p>
+      </a>
+      
+      <div class="card" id="reserve-trigger">
+        <img class="car-img mb-1" src="../../assets/svg/Group 17.svg">
+
+        <h3>Reserve</h3>
+        <p class="m-0">Book for later</p>
+      </div>
+    </div>
+    <ion-modal #ion_modal_reserve trigger="reserve-trigger" (willDismiss)="onWillDismissReserve()">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancelReserve()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Select pickup time</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-datetime [(ngModel)]="selectedReserveTime" hourCycle="h23" [min]="now.toISOString()"></ion-datetime>
+          <ion-button (click)="selectReserveTime()">Select</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <h3 class="m-0">Select location</h3>
+    <app-location-selector (locationUpdated)="updateLocation($event)"></app-location-selector>
+
+    <app-saved-locations (selectLocation)="updateLocation($event)"></app-saved-locations>
+
+    <a class="space-between vertical-align mt-2 mb-2 pointer" href="home/selectLocation">
+      <span class="display-flex vertical-align">
+        <img src="../../assets/svg/Group 100.svg">
+        <p class="m-0 ml-1">Set location on map</p>
+      </span>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </a>
+
+    <div style="margin-top: 5rem;display: none;">
+      <img class="car-img mb-1" src="../../assets/svg/DK.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 100.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 101.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 102.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 103.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 17.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 50.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 94.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 95.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 96.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Group 99.svg">
+      <img class="car-img mb-1" src="../../assets/svg/loading.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Mask group.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Tab 1.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Tab 2.svg">
+      <img class="car-img mb-1" src="../../assets/svg/Tab 4.svg">
+    </div>
+
+    <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="log-in-outline" (click)="login()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+
+    <h3 class="m-0">Where are you going?</h3>
+  </div>
+
+  <app-map class="mb-2 pointer" gestureHandling="none" (click)="selectLocationOnMap()"></app-map>
+
+</ion-content>

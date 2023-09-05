@@ -1,0 +1,41 @@
+
+<a class="space-between vertical-align mt-2 pointer" id="trigger-saved-locations">
+  <span class="display-flex vertical-align">
+    <ion-icon class="star-background" name="star-outline"></ion-icon>
+    <p class="m-0 ml-1">Choose saved location</p>
+  </span>
+  <ion-icon name="chevron-forward-outline"></ion-icon>
+</a>
+
+
+<ion-modal #ion_modal_saved_locations trigger="trigger-saved-locations" (willDismiss)="onWillDismiss()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>Select location</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list class="mb-4" *ngIf="savedLocations.length == 0">
+        <ion-item class="space-between">
+          <ion-label>No saved locations</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list class="mb-4" *ngIf="savedLocations.length != 0">
+        <ion-item class="space-between" *ngFor="let location of savedLocations" (click)="selectedLocation(location)">
+          <ion-icon class="star-background mr-2" name="star-outline"></ion-icon>
+          <ion-label>{{ location.destinationLabel }}</ion-label>
+        </ion-item>
+      </ion-list>
+      
+      <div class="separator">Or</div>
+      <h3>Add a saved location</h3>
+      <p>Search and select your favorite locations below</p>
+      <app-autocomplete-search (select)="addSaved($event)"></app-autocomplete-search>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+

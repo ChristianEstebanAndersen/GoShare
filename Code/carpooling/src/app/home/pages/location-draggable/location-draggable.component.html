@@ -1,0 +1,17 @@
+<app-map #map [height]="mapHeight" borderRadius="0rem 0rem 0px 0px"></app-map>
+
+<ion-icon name="chevron-back-outline" (click)="navigateBack()" style="position: absolute; top: 1rem; left: 1rem;"></ion-icon>
+
+<div class="ion-padding" style="margin-top: -1rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem; position: relative; background-color: #171717;" [ngStyle]="{'height': textHeight + 'vh'}">
+  <h1 *ngIf="showVerify">Set your destination</h1>
+  
+  <app-location-selector 
+    style="top: 30%; left: 50%; transform: translate(-50%, -50%);" 
+    #location_selector 
+    [onlyDest]="true" 
+    (locationUpdated)="locationUpdated($event)"
+    destLabel="Where are you going?">
+  </app-location-selector>
+
+  <ion-button *ngIf="showVerify" class="rounded center mt-2" (click)="confirmDestination()">Confirm destination</ion-button>
+</div>

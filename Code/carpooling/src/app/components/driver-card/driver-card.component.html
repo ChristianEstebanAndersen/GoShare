@@ -1,0 +1,32 @@
+
+<div class="driver-card" (click)="selectDriver()">
+  <div class="driver-image">
+    <img class="profile_image" src="../../assets/account_image.jpg">
+  </div>
+
+  <div class="rows">
+    <p class="m-0">{{ driver?.name }}</p>
+
+    <div class="display-flex">
+      <ion-icon class="star" name="star"></ion-icon>
+      <p class="m-0 stars">({{ driver?.stars }})</p>
+      <p class="m-0 white">{{ driver?.numReviwers }}</p>
+    </div>
+  </div>
+
+  <div class="display-flex" *ngIf="!asFinal">
+    <ion-icon class="color-accent" name="person-outline"></ion-icon>
+    {{ driver?.seats }}
+  </div>
+
+  <div *ngIf="!asFinal">
+    ${{ driver?.price }}
+  </div>
+
+  <ion-checkbox *ngIf="!asFinal" [formControl]="checkedForm"></ion-checkbox>
+
+  <div *ngIf="asFinal" class="rows">
+    <p class="m-0" style="color: White;">77-QR-90 | 2015</p>
+    <p class="m-0">Skoda Rapid</p>
+  </div>
+</div>

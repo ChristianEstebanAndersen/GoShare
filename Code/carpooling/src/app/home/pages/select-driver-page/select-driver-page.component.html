@@ -1,0 +1,132 @@
+
+
+<ion-content>
+  <app-map #map borderRadius="0px 0px 0px 0px"></app-map>
+
+  <div class="ion-padding request-card" *ngIf="stage == 'selectRiders'">
+    <h1 class="m-0">Request a ride</h1>
+    <span *ngIf="location?.time">Time: {{ location?.time | date: 'yyy/MM/dd HH:mm' }}</span>
+
+    <div class="space-between mt-2">
+      <p class="m-0">Nearby</p>
+      <p class="m-0">Seats</p>
+      <p class="m-0">Price</p>
+    </div>
+
+    <app-driver-card *ngFor="let driver of drivers" [driver]="driver" (driverClicked)="selectedDriver($event)" class="driver-card"></app-driver-card>
+
+    <app-payment-selector (selectedPayment)="selectPayment($event)"></app-payment-selector>
+
+    <div class="space-between mt-2">
+      <ion-button [disabled]="this.selectedDrivers.length == 0" size="large" class="full-width" expand="block" shape="round" (click)="RequestDrivers()">Request driver (s)</ion-button>
+      <ion-button size="large" id="reserve-trigger_on_select" shape="round" fill="clear" class="time-botton">
+        <ion-icon class="time-icon" name="time-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <ion-modal #ion_modal_reserve_on_select trigger="reserve-trigger_on_select" (willDismiss)="onWillDismissReserve()">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancelReserve()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Select pickup time</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-datetime [(ngModel)]="selectedReserveTime" hourCycle="h23" [min]="now.toISOString()"></ion-datetime>
+          <ion-button (click)="selectReserveTime()">Select</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+
+  <div class="ion-padding request-card center vertical-align tall" *ngIf="stage == 'confirm'">
+    <div style="width: 100%;display: flex; flex-direction: column; align-items: center;">
+      <div class="space-between gap mb-2 full-width">
+        <div class="bar green"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <p class="m-0">Your request has been approved...</p>
+      <img style="height: 10rem; width: 10rem;margin-top: 2rem;" src="../../../../assets/select_rider1.png">
+    </div>
+  </div>
+  
+  <div class="ion-padding request-card center vertical-align tall" *ngIf="stage == 'approved'">
+    <div style="width: 100%;display: flex; flex-direction: column; align-items: center;">
+      <div class="space-between gap mb-2 full-width">
+        <div class="bar green"></div>
+        <div class="bar green"></div>
+        <div class="bar"></div>
+      </div>
+      <p class="m-0">Your request is awaiting confirmation...</p>
+      <img style="height: 10rem; width: 10rem;margin-top: 2rem;" src="../../../../assets/select_rider2.png">
+    </div>
+  </div>
+  <div class="ion-padding request-card center vertical-align tall" *ngIf="stage == 'waiting'">
+    <div style="width: 100%;display: flex; flex-direction: column; align-items: center;">
+      <div class="space-between gap mb-2 full-width">
+        <div class="bar green"></div>
+        <div class="bar green"></div>
+        <div class="bar green"></div>
+      </div>
+      <p class="m-0">You will be put in contact with a driver...</p>
+      <img style="height: 10rem; width: 10rem;margin-top: 2rem;" src="../../../../assets/select_rider3.png">
+    </div>
+  </div>
+  
+  <div class="ion-padding request-card" *ngIf="stage == 'contact'">
+    <h1 class="m-0">Details</h1>
+    <span class="display-flex gap">
+      <p class="m-0">You will meet at the pickup location for...</p>
+      <p class="m-0" *ngIf="!location?.time" style="color: white; white-space: nowrap;">5 minutes</p>
+      <span *ngIf="location?.time">{{ location?.time | date: 'yyy/MM/dd HH:mm' }}</span>
+    </span>
+
+    <div class="mb-2"></div>
+    <app-driver-card [driver]="selectedDrivers[0]" [asFinal]="true" disabled="true"></app-driver-card>
+  
+    <div class="space-between mt-2 bottom-border">
+      <span class="display-flex vertical-align">
+        <img class="payment-icon" src="../../../../assets/svg/Group 100.svg">
+        <div class="ml-2">
+          <p class="m-0">{{ location?.locationLabel }}</p>
+          <p class="m-0">{{ location?.destinationLabel }}</p>
+        </div>
+      </span>
+    </div>
+
+    <div class="space-between mt-2 bottom-border">
+      <span class="display-flex vertical-align">
+        <img class="payment-icon" *ngIf="payment.type == 'mobilepay'" src="../../../../assets/svg/mobilepay.svg">
+        <img class="payment-icon" *ngIf="payment.type == 'paypal'" src="../../../../assets/svg/Group 101.svg">
+        <p style="margin: 0px 0px 0px 1rem;">${{ selectedDrivers[0].price }}</p>
+      </span>
+      <a class="link">Receipt</a>
+    </div>
+
+    <div class="space-between mt-2 bottom-border">
+      <span class="display-flex vertical-align">
+        <img class="payment-icon" src="../../../../assets/svg/Group 102.svg">
+        <p style="margin: 0px 0px 0px 1rem;">Do you ride with someone</p>
+      </span>
+      <a class="link">Split payment</a>
+    </div>
+    
+    <div class="space-between mt-2">
+      <span class="display-flex vertical-align">
+        <img class="payment-icon" src="../../../../assets/svg/Group 103.svg">
+        <p style="margin: 0px 0px 0px 1rem;">Share trip status</p>
+      </span>
+      <a class="link">Share</a>
+    </div>
+
+    <span class="space-between gap" style="margin-top: 2rem;">
+      <ion-button class="test-botton" style="color: #B93636" fill="outline" size="large" class="full-width" expand="block" shape="round">Cancel</ion-button>
+      <ion-button class="safty-botton" size="large" class="full-width" expand="block" shape="round">safty</ion-button>
+    </span>
+  </div>
+
+</ion-content>
+

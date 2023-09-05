@@ -1,0 +1,49 @@
+
+
+.profile_image {
+    border-radius: 100vw;
+    height: 3rem;
+}
+
+.map-buttons {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5;
+    background-color: #111111;
+    border-radius: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+}
+
+.set-current-location {
+    background-color: #171717;
+    border-radius: 100vw;
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+}
+
+.pick-on-map {
+    color: white;
+    border-radius: 100vw;
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.map-component {
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.star-background {
+    background-color: #5360E2;
+    padding: 0.3rem;
+    border-radius: 100vw;
+  }
+  

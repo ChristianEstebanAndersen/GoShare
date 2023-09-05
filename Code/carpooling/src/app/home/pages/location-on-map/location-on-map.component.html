@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="ion-padding">
+    <div class="space-between">
+      <ion-icon name="chevron-back-outline" (click)="navigateBack()"></ion-icon>
+      <span class="vertical-align">
+        <img class="profile_image" src="../../assets/account_image.jpg">
+      </span>
+      <span *ngIf="!locationSelector?.GetDate()"></span>
+      <span *ngIf="locationSelector?.GetDate()">{{ locationSelector?.GetDate() | date: 'yyy/MM/dd HH:mm' }}</span>
+    </div>
+
+    <app-location-selector #location_selector (locationUpdated)="locationUpdated($event)"></app-location-selector>
+    
+    <app-saved-locations (selectLocation)="locationUpdated($event)"></app-saved-locations>
+  </div>
+
+  <span class="map-component">
+    <div class="map-buttons">
+      <ion-icon class="pick-on-map background-color-accent" name="add-outline" (click)="setOnMap()"></ion-icon>
+      <ion-icon class="set-current-location" [ngStyle]="{'color': isCurrent ? '#5360E2' : 'white'}" name="locate-outline" (click)="setToCurrent()"></ion-icon>
+    </div>
+    <app-map #map [height]="60"></app-map>
+  </span>
+</ion-content>

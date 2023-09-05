@@ -1,0 +1,23 @@
+
+<div class="full-width center">
+  <google-map class="google-map"
+              [ngStyle]="{'border-radius': borderRadius}"
+              #google_map
+              [height]="height + 'vh'"
+              width="100vw"
+              [center]="center"
+              [zoom]="zoom"
+              [options]="{
+                disableDefaultUI: true,
+                styles: darkmode,
+                gestureHandling: gestureHandling
+              }">
+    <map-marker *ngFor="let marker of markers"
+                [position]="marker.position"
+                [options]="marker.options"
+                (mapDragend)="markerDropped($event, marker)"
+                ></map-marker>
+  </google-map>
+
+  <div #something></div>
+</div>

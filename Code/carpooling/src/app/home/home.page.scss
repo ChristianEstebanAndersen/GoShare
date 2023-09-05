@@ -1,0 +1,59 @@
+.maps-top {
+  display: block;
+  height: 20rem;
+}
+
+.overview-bottons {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+}
+
+.botton-top {
+  min-width: 85vw;
+  height: 8rem;
+  left: 0px;
+  top: 0px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1rem;
+  cursor: pointer; 
+}
+.botton-top.blue {
+  background: linear-gradient(90deg, #5360E2 -18.37%, rgba(17, 17, 17, 0) 100%);
+}
+.botton-top.green {
+  background: linear-gradient(90deg, #5ABC7A -18.37%, rgba(17, 17, 17, 0) 100%);
+}
+.botton-top.yellow {
+  background: linear-gradient(90deg, #FF9900 -18.37%, rgba(17, 17, 17, 0) 100%);
+}
+
+.profile_image {
+  border-radius: 100vw;
+  height: 3rem;
+}
+
+.card {
+  width: -webkit-fill-available;
+  padding: 1rem;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.car-img {
+  height: 4rem;
+}
+
+.star-background {
+  background-color: #5360E2;
+  padding: 0.3rem;
+  border-radius: 100vw;
+}
