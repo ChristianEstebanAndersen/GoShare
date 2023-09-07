@@ -124,9 +124,37 @@
 
     <span class="space-between gap" style="margin-top: 2rem;">
       <ion-button class="test-botton" style="color: #B93636" fill="outline" size="large" class="full-width" expand="block" shape="round">Cancel</ion-button>
-      <ion-button class="safty-botton" size="large" class="full-width" expand="block" shape="round">safty</ion-button>
+      <ion-button
+        size="large" 
+        id="safty_trigger"
+        class="safty-botton" 
+        class="full-width" 
+        expand="block" 
+        shape="round">
+        safty
+      </ion-button>
+      <ion-modal #ion_modal_safty trigger="safty_trigger" (willDismiss)="onWillDismissReserve()">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="closeSafty()">Close</ion-button>
+              </ion-buttons>
+              <ion-title>Safty information</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <h1>Safty</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3>Something</h3>
+            <p>Nec dui nunc mattis enim ut tellus elementum sagittis vitae. Ultrices neque ornare aenean euismod elementum nisi. Fringilla ut morbi tincidunt augue interdum velit euismod. Sem integer vitae justo eget magna fermentum iaculis eu. Sem et tortor consequat id porta nibh venenatis. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Massa tempor nec feugiat nisl. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Vitae turpis massa sed elementum tempus egestas. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Dignissim enim sit amet venenatis urna cursus eget nunc. Gravida dictum fusce ut placerat. Tortor condimentum lacinia quis vel eros donec ac odio tempor. Ut placerat orci nulla pellentesque dignissim enim sit. Dictum fusce ut placerat orci nulla pellentesque dignissim enim.</p>
+            <h3>Something</h3>
+            <p>Facilisi morbi tempus iaculis urna id volutpat lacus laoreet non. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Morbi blandit cursus risus at ultrices. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Purus non enim praesent elementum facilisis leo vel. Etiam sit amet nisl purus in mollis. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Vitae semper quis lectus nulla at. Odio facilisis mauris sit amet. Amet venenatis urna cursus eget nunc scelerisque viverra. Id porta nibh venenatis cras sed felis eget velit. Commodo viverra maecenas accumsan lacus. Neque convallis a cras semper auctor neque. Sit amet mauris commodo quis. Nascetur ridiculus mus mauris vitae ultricies leo integer.</p>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
     </span>
   </div>
-
 </ion-content>
+
 

@@ -15,6 +15,7 @@ import { IonModal } from '@ionic/angular';
 export class SelectDriverPageComponent  implements OnInit {
   @ViewChild('map') map: MapComponent |  undefined;
   @ViewChild('ion_modal_reserve_on_select') modalReserve: IonModal | undefined;
+  @ViewChild('ion_modal_safty') modalSafty: IonModal | undefined;
 
   drivers: Driver[] = [];
   selectedDrivers: Driver[] = [];
@@ -113,5 +114,9 @@ export class SelectDriverPageComponent  implements OnInit {
     this.modalReserve?.dismiss(null, 'confirm');
     if (this.location)
       this.location.time = this.selectedReserveTime;
+  }
+
+  closeSafty() {
+    this.modalSafty?.dismiss(null, 'cancel');
   }
 }
