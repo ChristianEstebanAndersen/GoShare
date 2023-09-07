@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormControl } from '@angular/forms';
+import { Helper } from 'src/app/_helpers/helper';
 import { Driver } from 'src/app/_models/driver';
 
 @Component({
@@ -12,6 +13,7 @@ export class DriverCardComponent  implements OnInit, ControlValueAccessor {
   @Input() asFinal: boolean = false;
   @Output() driverClicked: EventEmitter<{ selected: boolean, driver: Driver | undefined }> = new EventEmitter<{ selected: boolean, driver: Driver | undefined }>();
 
+  basePath: string = Helper.basePath;
   checkedForm: FormControl;
   onChanged: (selected: boolean) => void;
   onTouched: () => void = () => {};

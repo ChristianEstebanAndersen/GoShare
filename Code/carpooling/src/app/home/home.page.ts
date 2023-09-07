@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
   @ViewChild(MapComponent) map: MapComponent | undefined;
   @ViewChild(LocationSelectorComponent) locationSelector: LocationSelectorComponent | undefined;
 
+  basePath: string = Helper.basePath;
   selectedLocation: Location | undefined;
   now: Date;
   selectedReserveTime: Date | null = null;

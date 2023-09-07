@@ -3,7 +3,7 @@
     <div class="space-between">
       <ion-icon name="chevron-back-outline" (click)="navigateBack()"></ion-icon>
       <span class="vertical-align">
-        <img class="profile_image" src="../../assets/account_image.jpg">
+        <img class="profile_image" src="{{ basePath }}/account_image.jpg">
       </span>
       <span *ngIf="!locationSelector?.GetDate()"></span>
       <span *ngIf="locationSelector?.GetDate()">{{ locationSelector?.GetDate() | date: 'yyy/MM/dd HH:mm' }}</span>

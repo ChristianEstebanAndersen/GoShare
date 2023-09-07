@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Helper } from '../_helpers/helper';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ export class LoginPage {
   email: string = "";
   password: string = "";
 
+  basePath: string = Helper.basePath;
   constructor(private navCtrl: NavController) {}
 
   login() {

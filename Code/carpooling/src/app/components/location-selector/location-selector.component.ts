@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
+import { Helper } from 'src/app/_helpers/helper';
 import { CurrentLocation, Location } from 'src/app/_models/location';
 import { LocationService } from 'src/app/_services/google/locationService';
 
@@ -22,6 +23,8 @@ export class LocationSelectorComponent  implements OnInit {
 
   idLocation: string = "location-modal-" + Math.random().toFixed(5);
   idDestination: string = "location-modal-" + Math.random().toFixed(5);
+
+  basePath: string = Helper.basePath;
 
   constructor(
     locationService: LocationService

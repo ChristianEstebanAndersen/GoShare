@@ -1,7 +1,7 @@
 
 <div *ngIf="payment.type == 'mobilepay'" class="payment-option space-between vertical-align mb-2" id="open-modal">
   <div class="display-flex vertical-align">
-    <img class="mr-1" style="height: 2rem;" src="../../../assets/svg/mobilepay.svg">
+    <img class="mr-1" style="height: 2rem;" src="{{ basePath }}/svg/mobilepay.svg">
     <p class="m-0 white">Mobilepay</p>
   </div>
   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -9,7 +9,7 @@
 
 <div *ngIf="payment.type == 'paypal'" class="payment-option space-between vertical-align" id="open-modal" >
   <div class="display-flex vertical-align">
-    <img class="mr-1" src="../../../../assets/svg/Group 101.svg">
+    <img class="mr-1" src="{{ basePath }}/svg/Group 101.svg">
     <p class="m-0 white">PayPal</p>
   </div>
   <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -23,7 +23,7 @@
           <ion-button (click)="cancel()">Cancel</ion-button>
         </ion-buttons>
         <ion-title>Payment methods</ion-title>
-        <img slot="end" class="profile_image" src="../../assets/account_image.jpg">
+        <img slot="end" class="profile_image" src="{{ basePath }}/account_image.jpg">
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
@@ -42,7 +42,7 @@
       <h3>Payment method</h3>
       <div class="payment-option space-between vertical-align mb-2" (click)="select('mobilepay')">
         <div class="display-flex vertical-align">
-          <img class="mr-1" style="height: 2rem;" src="../../../assets/svg/mobilepay.svg">
+          <img class="mr-1" style="height: 2rem;" src="{{ basePath }}/svg/mobilepay.svg">
           <p class="m-0 white">Mobilepay</p>
         </div>
         <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -50,7 +50,7 @@
       
       <div class="payment-option space-between vertical-align" (click)="select('paypal')">
         <div class="display-flex vertical-align">
-          <img class="mr-1" src="../../../../assets/svg/Group 101.svg">
+          <img class="mr-1" src="{{ basePath }}/svg/Group 101.svg">
           <p class="m-0 white">PayPal</p>
         </div>
         <ion-icon name="chevron-forward-outline"></ion-icon>

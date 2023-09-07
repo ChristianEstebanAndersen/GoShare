@@ -17,6 +17,7 @@ export class LocationOnMapComponent  implements OnInit {
   @ViewChild('location_selector') locationSelector: LocationSelectorComponent |  undefined;
   @ViewChild('map') map: MapComponent |  undefined;
 
+  basePath: string = Helper.basePath;
   isCurrent: boolean = true;
   constructor(
     private navCtrl: NavController

@@ -23,6 +23,7 @@ export class SelectDriverPageComponent  implements OnInit {
   location: Location | undefined;
   selectedReserveTime: Date | null = null;
   now: Date;
+  basePath: string = Helper.basePath;
 
   constructor(private locationService: LocationService) { 
     this.now = new Date();

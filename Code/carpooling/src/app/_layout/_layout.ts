@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Helper } from '../_helpers/helper';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./_layout.scss'],
 })
 export class Layout {
-  
+  basePath: string = Helper.basePath;
+
   constructor(private navCtrl: NavController) {}
 
 }

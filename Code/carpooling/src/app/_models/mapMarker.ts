@@ -7,7 +7,7 @@ export class MapMarker {
             draggable: false, 
             animation: google.maps.Animation.DROP, 
             icon: null, /*{
-                url: '../../assets/svg/location-outline.svg',
+                url: '{{ basePath }}/svg/location-outline.svg',
                 scaledSize: new google.maps.Size(50, 50),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(0, 0),

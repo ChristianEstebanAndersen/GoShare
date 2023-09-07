@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { IonModal } from '@ionic/angular';
 import { Payment } from 'src/app/_models/payment';
 import { OverlayEventDetail } from '@ionic/core';
+import { Helper } from 'src/app/_helpers/helper';
 
 @Component({
   selector: 'app-payment-selector',
@@ -14,6 +15,7 @@ export class PaymentSelectorComponent  implements OnInit {
 
   payment: Payment = new Payment();
 
+  basePath: string = Helper.basePath;
   promotionCode: string = "";
   useGoshare: boolean = true;
   constructor() { }
